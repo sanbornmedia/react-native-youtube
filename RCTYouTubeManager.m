@@ -70,4 +70,7 @@ RCT_EXPORT_METHOD(seekTo:(nonnull NSNumber *)reactTag seconds:(nonnull NSNumber 
      }];
 }
 
+RCT_EXPORT_METHOD(muteVideo);
+RCT_EXPORT_METHOD(unMuteVideo);
+
 @end

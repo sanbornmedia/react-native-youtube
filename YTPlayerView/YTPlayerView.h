@@ -239,6 +239,14 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  */
 - (void)clearVideo;
 
+/**
+ * Mutes/unmutes the player. Corresponds to this method from
+ * the JavaScript API:
+ *   https://developers.google.com/youtube/iframe_api_reference#mute
+ */
+- (void)muteVideo;
+- (void)unMuteVideo;
+
 #pragma mark - Queuing videos
 
 // Queueing functions for videos. These methods correspond to their JavaScript
