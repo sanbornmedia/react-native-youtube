@@ -70,7 +70,28 @@ RCT_EXPORT_METHOD(seekTo:(nonnull NSNumber *)reactTag seconds:(nonnull NSNumber 
      }];
 }
 
-RCT_EXPORT_METHOD(muteVideo);
-RCT_EXPORT_METHOD(unMuteVideo);
+RCT_EXPORT_METHOD(muteVideoWithReactTag:(nonnull NSNumber *)reactTag)
+{
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
+        RCTYouTube *youtube = viewRegistry[reactTag];
+        if ([youtube isKindOfClass:[RCTYouTube class]]) {
+            [youtube muteVideo];
+        } else {
+            RCTLogError(@"Cannot mute: %@ (tag #%@) is not RCTYouTube", youtube, reactTag);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(unMuteVideoWithReactTag:(nonnull NSNumber *)reactTag)
+{
+    [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
+        RCTYouTube *youtube = viewRegistry[reactTag];
+        if ([youtube isKindOfClass:[RCTYouTube class]]) {
+            [youtube unMuteVideo];
+        } else {
+            RCTLogError(@"Cannot unMute: %@ (tag #%@) is not RCTYouTube", youtube, reactTag);
+        }
+    }];
+}
 
 @end

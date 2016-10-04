@@ -68,6 +68,12 @@ export default class YouTube extends Component {
   seekTo(seconds){
     NativeModules.YouTubeManager.seekTo(ReactNative.findNodeHandle(this), parseInt(seconds, 10));
   }
+  mute() {
+    NativeModules.YouTubeManager.muteVideoWithReactTag(ReactNative.findNodeHandle(this))
+  }
+  unMute() {
+    NativeModules.YouTubeManager.unMuteVideoWithReactTag(ReactNative.findNodeHandle(this)) 
+  }
   render() {
     var style = [styles.base, this.props.style];
     var nativeProps = Object.assign({}, this.props);
